@@ -1,0 +1,11 @@
+Welcome back to the theme park!
+<% if @user.admin? %>
+  ADMIN
+<% end %>
+Name: <%= @user.name %>
+Tickets: <%= @user.tickets %>
+Mood: <%= @user.mood %>
+Height: <%= @user.height %>
+<%= link_to "Edit", edit_user_path %>
+<%= link_to "See attractions", attractions_path %>
+<li><%= link_to "Log Out", signout_path, method: :delete %></li>

@@ -52,14 +52,14 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page).to have_content("Sign Up")
   end
 
-  it 'successfully signs up as admin' do
-    visit_signup
-    expect(current_path).to eq('/users/new')
-    admin_signup
-    expect(current_path).to eq('/users/1')
-    expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
-  end
+  # it 'successfully signs up as admin' do
+  #   visit_signup
+  #   expect(current_path).to eq('/users/new')
+  #   admin_signup
+  #   expect(current_path).to eq('/users/1')
+  #   expect(page).to have_content("Walt Disney")
+  #   expect(page).to have_content("ADMIN")
+  # end
 
   it "on sign up for admin, successfully adds a session hash" do
     visit_signup
@@ -67,20 +67,20 @@ describe 'Feature Test: User Signup', :type => :feature do
     expect(page.get_rack_session_key('user_id')).to_not be_nil
   end
 
-  it 'successfully logs in as admin' do
-    visit_signin
-    expect(current_path).to eq('/signin')
-    admin_login
-    expect(current_path).to eq('/users/2')
-    expect(page).to have_content("Walt Disney")
-    expect(page).to have_content("ADMIN")
-  end
+  # it 'successfully logs in as admin' do
+  #   visit_signin
+  #   expect(current_path).to eq('/signin')
+  #   admin_login
+  #   expect(current_path).to eq('/users/2')
+  #   expect(page).to have_content("Walt Disney")
+  #   expect(page).to have_content("ADMIN")
+  # end
 
-  it "on log in, successfully adds a session hash to admins" do
-    visit_signin
-    admin_login
-    expect(page.get_rack_session_key('user_id')).to_not be_nil
-  end
+  # it "on log in, successfully adds a session hash to admins" do
+  #   visit_signin
+  #   admin_login
+  #   expect(page.get_rack_session_key('user_id')).to_not be_nil
+  # end
 
 end
 

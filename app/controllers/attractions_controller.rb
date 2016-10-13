@@ -5,6 +5,7 @@ class AttractionsController < ApplicationController
   end
 
   def show
+    binding.pry
     @attraction = Attraction.find_by(id: params[:id])
   end
 

@@ -5,18 +5,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:user][:password].blank?
-      redirect_to signin_path
-    else
-      @user = User.find_by(id: params[:user][:id])
-      if @user.authenticate(params[:user][:password])
+    @user = User.find_by(name: params[:user][:name])
+      if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to @user
       else
-        redirect_to signin_path
+        # redirect_to signin_path
+        render :new
       end
     end
-  end
 
   def destroy
     session.clear
@@ -28,4 +25,8 @@ class SessionsController < ApplicationController
     def user_params
       params.require(:user).permit(:id, :password)
     end
+
+
 end
+
+
